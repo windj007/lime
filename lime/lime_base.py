@@ -71,7 +71,7 @@ class LimeBase(object):
         elif method == 'forward_selection':
             return self.forward_selection(data, labels, weights, num_features)
         elif method == 'highest_weights':
-            clf = sklearn.linear_model.Ridge(alpha=0, fit_intercept=True)
+            clf = sklearn.linear_model.Ridge(alpha=0, fit_intercept=True, solver='lsqr')
             clf.fit(data, labels, sample_weight=weights)
             feature_weights = sorted(zip(range(data.shape[0]),
                                          clf.coef_ * data[0]),
